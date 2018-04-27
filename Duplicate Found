@@ -1,0 +1,3 @@
+SELECT COUNT(RawMeterialId),RawMeterialId  FROM dbo.RawMeterialRequisition WHERE Month=4 AND Year=2018 GROUP BY RawMeterialId HAVING COUNT(RawMeterialId) >1
+
+ 
