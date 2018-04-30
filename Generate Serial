@@ -1,0 +1,17 @@
+ALTER PROCEDURE [dbo].[SP_Genarate_ChallanNoForOtherMaterial_Serial]
+	-- Add the parameters for the stored procedure here
+	@prefix NVARCHAR(10)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	--  SP_Genarate_ChallanNoForOtherMaterial_Serial'OMI'
+	SET NOCOUNT ON;
+
+
+    -- Insert statements for procedure here
+	SELECT --SystemChallanNo, RIGHT(SystemChallanNo,6), 
+coalesce(@prefix+RIGHT(CAST((MAX(CAST(RIGHT(ChallanNo,6) AS INT))+1000001) AS NVARCHAR(10)),6), @prefix+'000001' ) AS challanNo
+FROM dbo.OtherMaterialIssue -- WHERE ShopID_Old=@shopId
+
+END
