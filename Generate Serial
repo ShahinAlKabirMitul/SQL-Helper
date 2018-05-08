@@ -15,3 +15,12 @@ coalesce(@prefix+RIGHT(CAST((MAX(CAST(RIGHT(ChallanNo,6) AS INT))+1000001) AS NV
 FROM dbo.OtherMaterialIssue -- WHERE ShopID_Old=@shopId
 
 END
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+SELECT 
+coalesce('FP'+RIGHT(CAST((MAX(CAST(RIGHT(ChallanNo,6) AS INT))+1000001) AS NVARCHAR(10)),6), 'FP'+'000001' ) AS challanNo
+FROM dbo.ForceProductionEntry 
